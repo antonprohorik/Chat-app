@@ -33,7 +33,7 @@ export const useAuthStore = create((set, get) => ({
     try {
       const res = await axiosInstance.post("/auth/signup", data);
       set({ authUser: res.data });
-      toast.success("Account created successfully");
+      toast.success("Учетная запись успешно создана");
       get().connectSocket();
     } catch (error) {
       toast.error(error.response.data.message);
@@ -47,7 +47,7 @@ export const useAuthStore = create((set, get) => ({
     try {
       const res = await axiosInstance.post("/auth/login", data);
       set({ authUser: res.data });
-      toast.success("Logged in successfully");
+      toast.success("Успешно вошел в систему");
 
       get().connectSocket();
     } catch (error) {
@@ -61,7 +61,7 @@ export const useAuthStore = create((set, get) => ({
     try {
       await axiosInstance.post("/auth/logout");
       set({ authUser: null });
-      toast.success("Logged out successfully");
+      toast.success("Успешно вышел из системы");
       get().disconnectSocket();
     } catch (error) {
       toast.error(error.response.data.message);
@@ -73,7 +73,7 @@ export const useAuthStore = create((set, get) => ({
     try {
       const res = await axiosInstance.put("/auth/update-profile", data);
       set({ authUser: res.data });
-      toast.success("Profile updated successfully");
+      toast.success("Профиль успешно обновлен");
     } catch (error) {
       console.log("error in update profile:", error);
       toast.error(error.response.data.message);

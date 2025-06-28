@@ -53,6 +53,15 @@ export const useChatStore = create((set, get) => ({
       const isMessageSentFromSelectedUser = newMessage.senderId === selectedUser._id;
       if (!isMessageSentFromSelectedUser) return;
 
+      toast.success(
+        `Новое сообщение от ${selectedUser.fullName}`,
+        {
+          duration: 2000,
+          position: "top-center",
+          icon: " ",
+        }
+      );
+
       set({
         messages: [...get().messages, newMessage],
       });
